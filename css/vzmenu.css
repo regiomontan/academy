@@ -1,0 +1,244 @@
+@charset "UTF-8"; 
+ @font-face {
+  font-family   : "menu_font";
+  src                  : url( '../fonts/DroidSans.ttf' );
+  font-weight  : normal;
+  font-style      : normal;
+} 
+ :root{
+	 --menu_background : #1f393e;
+	 --menu_text_color    :  #c0aa8b;  
+	 --menu_items            : 5;                   /*  кол. пунктов меню */
+ }
+
+/* Мобильное меню **********************************/
+ 
+ .mobmenu{
+	background : var( --menu_background );
+    color             : var( --menu_text_color);	
+	height          : 100%;
+	font-family : menu_font;
+ }
+ 
+ .mobmenu details{
+   padding-left : 0.1rem;
+  }
+ 
+ .mobmenu details summary{
+	 display                               : grid;
+	 grid-template-columns  : auto auto auto;
+	 align-content                    : center;
+	 justify-content                 : space-between;
+     text-decoration               : none;
+	 padding                             : 2px;
+	 outline                               : none;  /* remove blue border from open <details> */
+ }
+ 
+ .mobmenu details summary::-webkit-details-marker {
+  display : none
+ }
+ 
+ .mobmenu details summary .hamburger i.fa.fa-times{
+	display : none;
+ }
+ 
+ .mobmenu details[open] summary{
+	 border-bottom : 1px solid;
+ }
+ 
+ .mobmenu details[open] summary .hamburger i.fa.fa-bars{
+	display : none;
+ }
+ 
+ .mobmenu details[open] summary .hamburger i.fa.fa-times{
+	display : block;
+ }
+ 
+ .mobmenu ul{
+	list-style-image : none;
+    list-style-type    : none;
+	padding-left      : 0.2rem;
+ }
+ 
+ .mobmenu ul li{
+	 margin-top   : 1rem; 
+ }
+ 
+  .mobmenu ul li a{
+     color                    : var(--menu_text_color);
+     text-decoration : none;
+  }
+ 
+ /* Большое меню ****************************************/
+.PrimaryNav {
+  list-style              : none;
+  margin                : 0;
+  max-width          : 100%;
+  padding              : 0;
+  width                   : 100%; 
+  border-bottom : 1px solid var( --menu_text_color );
+  border-top         : 1px solid var( --menu_text_color );
+   }
+
+.Nav-item {
+  background : var( --menu_background );
+  display          : block;
+  float              : left;
+  margin         : 0;
+  padding       : 0;
+  width            : calc( 100% / var(--menu_items) );         /*  1/n, n -- кол. пунктов меню */
+  text-align     : center;
+  font-family  : menu_font, sans-serif;
+  font-size       : 0.9rem; 
+  }
+  
+  /*****************************/
+  .Nav-item a i.fa {
+	  margin-bottom : 3px;
+	  margin-top        : -3px; 
+  }
+  /*****************************/
+  
+  .Nav-item:first-child {
+    /*border-radius: 0.5em 0 0 0.5em;*/
+	}
+	
+  .Nav-item:last-child {
+    /*border-radius: 0 0.5em 0.5em 0; */
+	}
+	
+  .Nav-item.is-active a {
+    /*color : var(--menu_text_color);*/
+	}
+	
+  .Nav-item a {
+    color                    : var( --menu_text_color );
+    display                 : block;
+    padding-top        : 0.75em;
+    padding-bottom : 0.75em;
+    text-decoration   : none;
+	}
+	
+   .Nav-item a:hover {
+      color : var( --menu_text_color ); 
+  }
+  
+  .with-indicator {
+     position : relative;
+     z-index   : 0; 
+  }
+  
+  .with-indicator .Nav-item:last-child:before, 
+  .with-indicator .Nav-item:last-child:after {
+    content               : ' ';
+    display                : block;
+    position              : absolute;
+    pointer-events  : none;
+    transition           : left 0.2s ease;
+    border-radius   : 0.15em; 
+	}
+	
+ .with-indicator .Nav-item:last-child:before {
+    border                   : 0.5em solid transparent;
+    border-bottom-color : var( --menu_text_color );
+    width                      : 0;
+    height                     : 0;
+    top                          : 3.5rem;
+    left                          : 10%;
+    margin-left           : -0.5em; 
+	}
+
+  .with-indicator .Nav-item:last-child:after {
+    background  : var(--menu_text_color); 
+    top                 : -0.2em;
+    bottom          : -0.2em;
+    left                 : 0;
+    width             : 17%;
+    z-index          : -1; 
+	margin-left   : 1.5%; 
+	margin-right : 1.5%; 
+	}
+
+  .with-indicator .Nav-item:nth-child(1).is-active ~ .Nav-item:last-child:after {
+    left: 0%; }
+  .with-indicator .Nav-item:nth-child(1).is-active ~ .Nav-item:last-child:before {
+    left: 10%; }
+  .with-indicator .Nav-item:nth-child(2).is-active ~ .Nav-item:last-child:after {
+    left: 20%; }
+  .with-indicator .Nav-item:nth-child(2).is-active ~ .Nav-item:last-child:before {
+    left: 30%; }
+  .with-indicator .Nav-item:nth-child(3).is-active ~ .Nav-item:last-child:after {
+    left: 40%; }
+  .with-indicator .Nav-item:nth-child(3).is-active ~ .Nav-item:last-child:before {
+    left: 50%; }
+  .with-indicator .Nav-item:nth-child(4).is-active ~ .Nav-item:last-child:after {
+    left: 60%; }
+  .with-indicator .Nav-item:nth-child(4).is-active ~ .Nav-item:last-child:before {
+    left: 70%; }
+  .with-indicator .Nav-item:nth-child(1):hover ~ .Nav-item:last-child:after {
+    left: 0% !important; }
+  .with-indicator .Nav-item:nth-child(1):hover ~ .Nav-item:last-child:before {
+    left: 10% !important; }
+  .with-indicator .Nav-item:nth-child(2):hover ~ .Nav-item:last-child:after {
+    left: 20% !important; }
+  .with-indicator .Nav-item:nth-child(2):hover ~ .Nav-item:last-child:before {
+    left: 30% !important; }
+  .with-indicator .Nav-item:nth-child(3):hover ~ .Nav-item:last-child:after {
+    left: 40% !important; }
+  .with-indicator .Nav-item:nth-child(3):hover ~ .Nav-item:last-child:before {
+    left: 50% !important; }
+  .with-indicator .Nav-item:nth-child(4):hover ~ .Nav-item:last-child:after {
+    left: 60% !important; }
+  .with-indicator .Nav-item:nth-child(4):hover ~ .Nav-item:last-child:before {
+    left: 70% !important; }
+  .with-indicator .Nav-item:last-child:hover:before, .with-indicator .Nav-item:last-child.is-active:before {
+    left: 90% !important; }
+  .with-indicator .Nav-item:last-child:hover:after, .with-indicator .Nav-item:last-child.is-active:after {
+    left: 80% !important; }
+
+*, *:before, *:after {
+   box-sizing : border-box; 
+  }
+
+.PrimaryNav:before,
+.PrimaryNav:after {
+  content : " ";
+  display  : table; 
+  }
+
+.PrimaryNav:after {
+  clear : both; 
+  }
+  
+  .Nav-item a:hover {
+      transform               : scale( 1.05 ); 
+	  -webkit-transform : scale( 1.05 );
+	  -webkit-transition  : transform 1s;
+	  transition                 : transform 1s;
+  }
+  
+  
+ /* меню на гридах */  
+  .PrimaryNav .with-indicator{
+	 display                             : grid;
+	align-content                   : center;
+	justify-content                 : space-between;
+	justify-items                     : stretch;
+  }
+  
+/*  игра в прятки 
+/*  ѕрячем большое, показываем мобильное  */
+@media only screen and (max-width: 600px) {
+         .top-bar {
+          display: none;
+         }  
+ }
+/* прячем мобильное меню, показываем большое */
+@media only screen and (min-width: 601px) {
+         .mobmenu {
+          display: none;
+         }
+}		 
+  
+
+
